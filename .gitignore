@@ -24,6 +24,8 @@ dist-ssr
 *.sw?
 
 .env
+ashus.html
+
 # AdaLPDb8xuLjZQb7
 
 # mongodb+srv://aslamshaik9573_db_user:AdaLPDb8xuLjZQb7@cluster0.ibmlsql.mongodb.net/?appName=Cluster0

@@ -8,19 +8,20 @@ connectDB();
 const app = express();
 // let __dirname = path.resolve();
 
-if (process.env.NODE_ENV !== "productio") {
-  app.use(
-    cors({
-      origin: "http://localhost:5173/",
-    }),
-  );
-}
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+    credentials: true,
+  }),
+);
 app.use(express.json());
+// const cookieParser = require("cookie-parser");
+// app.use(cookieParser());
 
 app.use("/api/auth", require("./routes/authRoutes"));
 app.use("/api/users", require("./routes/userRoutes"));
 
-if (process.NODE_ENV === "production") {
+if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "../frontend/dist")));
 
   app.get("*", (req, res) => {

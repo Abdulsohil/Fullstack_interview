@@ -6,12 +6,15 @@ export default function Users() {
     api.get("/users").then((res) => setUsers(res.data));
   }, []);
   return (
-    <ul>
-      {users.map((u) => (
-        <li key={u._id}>
-          {u.name} - {u.email}
-        </li>
-      ))}
-    </ul>
+    <>
+      <h1>Users Page</h1>
+      <ul>
+        {users.map((u) => (
+          <li key={u._id}>
+            {u.name} - {u.email}
+          </li>
+        ))}
+      </ul>
+    </>
   );
 }

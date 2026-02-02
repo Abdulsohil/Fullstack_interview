@@ -8,4 +8,8 @@ api.interceptors.request.use((config) => {
   return config;
 });
 
+// axios.post("http://localhost:5000/api/auth/login", data, {
+//   withCredentials: true,
+// });
+
 export default api;
