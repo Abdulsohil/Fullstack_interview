@@ -6,30 +6,21 @@ const path = require("path");
 
 connectDB();
 const app = express();
-// const __dirname = path.resolve();
 
-if (process.env.NODE_ENV !== "production") {
-  app.use(
-    cors({
-      origin: "http://localhost:5173",
-    }),
-  );
-}
 
+app.use(cors());
 app.use(express.json());
-// const cookieParser = require("cookie-parser");
-// app.use(cookieParser());
+
 
 app.use("/api/auth", require("./routes/authRoutes"));
 app.use("/api/users", require("./routes/userRoutes"));
 
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "../frontend/dist")));
+app.use(express.static(path.join(__dirname, "../frontend/dist")));
 
-  app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "../frontend", "dist", "index.html"));
-  });
-}
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../frontend/dist/index.html"));
+});
+
 app.listen(5000, () => {
   console.log("Server running");
 });

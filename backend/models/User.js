@@ -14,6 +14,8 @@ const userSchema = new mongoose.Schema(
     deleted: { type: Boolean, default: false },
     createdBy: String,
     updatedBy: String,
+    resetPasswordToken: String,
+    resetPasswordExpires: Date,
   },
   { timestamps: true },
 );

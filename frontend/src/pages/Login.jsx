@@ -1,42 +1,62 @@
 import { useState, useContext } from "react";
 import api from "../api";
 import { AuthContext } from "../context/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 export default function Login() {
+  //hello
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const { login } = useContext(AuthContext);
+  const navigate = useNavigate();
+
   const submit = async (e) => {
     e.preventDefault();
     try {
       const res = await api.post("/auth/login", { email, password });
-      login(res.data.token);
+
+      console.log("Login success:", res.data); // debug
+
+      login(res.data.token); // store token
+      navigate("/dashboard");
+      // window.location.href = "/dashboard";
     } catch (err) {
-      setError(err.response?.data?.message || "Login failed");
+      console.error("Login failed:", err.response?.data || err.message);
+      alert(err.response?.data?.message || "Login failed");
     }
   };
   return (
-    <form onSubmit={submit}>
-      <h1>Login Page</h1>
-      <input
-        id="email"
-        onChange={(e) => setEmail(e.target.value)}
-        placeholder="Email"
-      />
-      <br />
-      <br />
-      <input
-        id="password"
-        type="password"
-        onChange={(e) => setPassword(e.target.value)}
-        placeholder="Password"
-        length="18"
-      />
-      <br />
-      <br />
-      <button>Login</button>
-      {error && <p style={{ color: "red" }}>{error}</p>}
-    </form>
+    <>
+      <form onSubmit={submit}>
+        <h1>Login Page</h1>
+        <input
+          id="email"
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="Email"
+        />
+        <br />
+        <br />
+        <input
+          id="password"
+          type="password"
+          onChange={(e) => setPassword(e.target.value)}
+          placeholder="Password"
+          length="18"
+        />
+        <br />
+        <br />
+        <button>Login</button>
+        <button
+          onClick={() => {
+            window.location.href = "/forgot-password";
+          }}
+          id="FPBtn"
+        >
+          Forget Password
+        </button>
+        {error && <p style={{ color: "red" }}>{error}</p>}
+      </form>
+    </>
   );
 }

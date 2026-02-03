@@ -16,7 +16,7 @@ export default function Users() {
       <ul>
         {users.map((u) => (
           <li key={u._id}>
-            {u.name} - {u.email} - {u.role}
+            {u.name} - {u.email} - {u.role} - {u.status } - {u.createdAt}
           </li>
         ))}
       </ul>
