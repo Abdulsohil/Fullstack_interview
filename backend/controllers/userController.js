@@ -14,6 +14,7 @@ exports.createUser = async (req, res) => {
     createdBy: req.user.id,
   });
   res.json(user);
+  // console.log(hash);
 };
 
 exports.getUsers = async (req, res) => {
