@@ -6,14 +6,16 @@ const path = require("path");
 
 connectDB();
 const app = express();
-// let __dirname = path.resolve();
+// const __dirname = path.resolve();
 
-app.use(
-  cors({
-    origin: "http://localhost:5173",
-    credentials: true,
-  }),
-);
+if (process.env.NODE_ENV !== "production") {
+  app.use(
+    cors({
+      origin: "http://localhost:5173",
+    }),
+  );
+}
+
 app.use(express.json());
 // const cookieParser = require("cookie-parser");
 // app.use(cookieParser());
