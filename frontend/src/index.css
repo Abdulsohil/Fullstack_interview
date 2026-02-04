@@ -51,3 +51,36 @@ button:hover {
 .Btn1:hover {
   background-color: #007bb5;
 }
+
+.size {
+  width: 80px;
+}
+.btnsize {
+  padding: 10px;
+}
+
+#userManagement {
+  margin: 20px;
+}
+#userForm input {
+  margin: 5px 0;
+  padding: 8px;
+  width: 300px;
+}
+#userForm label {
+  font-weight: bold;
+}
+#userForm button {
+  width: auto;
+  padding: 8px 16px;
+  margin-top: 10px;
+}
+#userManagement ul {
+  list-style-type: none;
+  padding: 0;
+}
+#userManagement li {
+  margin-bottom: 15px;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 10px;
+}

@@ -1,38 +1,6 @@
-// import { Link } from "react-router-dom";
-// import { useEffect, useState } from "react";
-// import api from "../api";
-
-// export default function Users() {
-//   const [users, setUsers] = useState([]);
-//     const [form, setForm] = useState({
-//       name: "",
-//       email: "",
-//       password: "",
-//       role: "USER",
-//     });
-//     const [editingId, setEditingId] = useState(null);
-
-//   useEffect(() => {
-//     api.get("/users").then((res) => setUsers(res.data));
-//   }, []);
-
-//   return (
-//     <div>
-//       <h2>User List</h2>
-//       <Link to="/dashboard">Back to Dashboard</Link>
-//       <ul>
-//         {users.map((u) => (
-//           <li key={u._id}>
-//             {u.name} - {u.email} - {u.role} - {u.status } - {u.createdAt}
-//           </li>
-//         ))}
-//       </ul>
-//     </div>
-//   );
-// }
-
 import { useEffect, useState } from "react";
 import api from "../api";
+import { Link } from "react-router-dom";
 
 export default function Users() {
   const [users, setUsers] = useState([]);
@@ -77,10 +45,12 @@ export default function Users() {
   };
 
   return (
-    <div>
+    <div id="userManagement">
       <h2>User Management</h2>
-
-      <form onSubmit={handleSubmit}>
+      <Link to="/Dashboard">Go to DashBoard</Link>
+      <br />
+      <br />
+      <form id="userForm" onSubmit={handleSubmit}>
         <label htmlFor="Name">Name : </label>
         <input
           placeholder="Name"
@@ -137,8 +107,13 @@ export default function Users() {
             {new Date(u.updatedAt).toLocaleString()}
             <br />
             <br />
-            <button onClick={() => handleEdit(u)}>Edit</button>
-            <button className="Btn1" onClick={() => handleDelete(u._id)}>
+            <button className="size" onClick={() => handleEdit(u)}>
+              Edit
+            </button>
+            <button
+              className="Btn1 size btnsize"
+              onClick={() => handleDelete(u._id)}
+            >
               Delete
             </button>
           </li>
