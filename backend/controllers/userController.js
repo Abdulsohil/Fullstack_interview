@@ -23,13 +23,19 @@ exports.getUsers = async (req, res) => {
 };
 
 exports.updateUser = async (req, res) => {
-  const user = await User.findByIdAndUpdate(req.params.id, req.body, {
-    new: true,
-  });
+  const { name, role, status } = req.body;
+  const user = await User.findByIdAndUpdate(
+    req.params.id,
+    { name, role, status, updatedBy: req.user.id },
+    { new: true },
+  );
   res.json(user);
 };
 
 exports.deleteUser = async (req, res) => {
-  await User.findByIdAndUpdate(req.params.id, { deleted: true });
-  res.json({ message: "User soft deleted" });
+  await User.findByIdAndUpdate(req.params.id, {
+    deleted: true,
+    status: "INACTIVE",
+  });
+  res.json({ message: "User deleted successfully" });
 };

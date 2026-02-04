@@ -5,6 +5,7 @@ button {
   font-size: 18px;
 }
 
-#FPBtn {
+#FPBtn,
+.Btn1 {
   margin-left: 10px;
 }
