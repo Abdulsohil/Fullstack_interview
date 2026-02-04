@@ -9,3 +9,45 @@ button {
 .Btn1 {
   margin-left: 10px;
 }
+
+#loginContainer {
+  margin-top: 50px;
+  text-align: center;
+}
+
+#loginForm {
+  display: inline-block;
+  text-align: left;
+}
+
+#error {
+  color: red;
+  margin-top: 10px;
+}
+#email,
+#password {
+  width: 250px;
+  padding: 8px;
+}
+button {
+  width: 100%;
+  padding: 10px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+button:hover {
+  background-color: #45a049;
+}
+#FPBtn,
+.Btn1 {
+  /* width: auto; */
+  padding: 8px 16px;
+  background-color: #008cba;
+}
+
+#FPBtn:hover,
+.Btn1:hover {
+  background-color: #007bb5;
+}

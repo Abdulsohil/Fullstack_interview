@@ -27,8 +27,8 @@ export default function Login() {
     }
   };
   return (
-    <>
-      <form onSubmit={submit}>
+    <div id="loginContainer">
+      <form onSubmit={submit} id="loginForm">
         <h1>Login Page</h1>
         <input
           id="email"
@@ -48,15 +48,20 @@ export default function Login() {
         <br />
         <button>Login</button>
         <button
+          style={{ marginLeft: "-1px" }}
           onClick={() => {
             window.location.href = "/forgot-password";
           }}
           id="FPBtn"
         >
-          Forget Password
+          forgot password
         </button>
-        {error && <p style={{ color: "red" }}>{error}</p>}
+        {error && (
+          <p id="error" style={{ color: "red" }}>
+            {error}
+          </p>
+        )}
       </form>
-    </>
+    </div>
   );
 }
